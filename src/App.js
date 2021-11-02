@@ -2,15 +2,19 @@ import "./styles.css";
 import { Button, Form, ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-let todoList = [];
+import TaskList from "./components/TaskList/index";
 
 export default function App() {
-  let [task, setTask] = useState("");
+  const [todoList, setToDoList] = useState([
+    "buy fresh bread",
+    "pay for rent",
+    "call boss",
+  ]);
+  const [task, setTask] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    todoList.push(task);
-    setTask((prevState) => "");
+    setToDoList(todoList.push(task));
     console.log("todoList", todoList);
   }
 
@@ -18,8 +22,6 @@ export default function App() {
     //console.log(event.target.value)
     setTask(event.target.value);
   }
-
-  useEffect;
 
   return (
     <div className="App">
@@ -36,11 +38,6 @@ export default function App() {
           Submit
         </Button>
       </Form>
-      <ListGroup>
-        {todoList.forEach((element) => {
-          <ListGroup.Item>{element}</ListGroup.Item>;
-        })}
-      </ListGroup>
     </div>
   );
 }
