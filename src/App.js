@@ -26,7 +26,6 @@ export default function App() {
   }
 
   function handleDelTask(id) {
-    console.log(id);
     setToDoList(todoList.filter((item) => item.id !== id));
   }
 
