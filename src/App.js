@@ -3,7 +3,7 @@ import { Button, Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import TaskList from "./components/TaskList/index";
-//const initState = ["buy fresh bread", "pay for rent", "do homework"];
+let initId = 3;
 const initState = [
   { id: 1, task: "buy fresh bread", isDone: false },
   { id: 2, task: "pay for rent", isDone: false },
@@ -40,8 +40,6 @@ export default function App() {
             placeholder="enter your text"
             onChange={handleAddTask}
           ></Form.Control>
-        </Form.Group>
-        <Form.Group>
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
