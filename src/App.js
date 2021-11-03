@@ -3,23 +3,19 @@ import { Button, Form, ListGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import TaskList from "./components/TaskList/index";
+const initState = ["buy fresh bread", "pay for rent", "call boss"];
 
 export default function App() {
-  const [todoList, setToDoList] = useState([
-    "buy fresh bread",
-    "pay for rent",
-    "call boss",
-  ]);
+  const [todoList, setToDoList] = useState(initState);
   const [task, setTask] = useState("");
+  console.log(todoList);
 
   function handleSubmit(event) {
     event.preventDefault();
-    setToDoList(todoList.push(task));
-    console.log("todoList", todoList);
+    setToDoList([...todoList, task]);
   }
 
   function handleAddTask(event) {
-    //console.log(event.target.value)
     setTask(event.target.value);
   }
 
@@ -38,6 +34,11 @@ export default function App() {
           Submit
         </Button>
       </Form>
+      <ListGroup>
+        {todoList.map((item, index) => (
+          <ListGroup.Item key={index}>{item}</ListGroup.Item>
+        ))}
+      </ListGroup>
     </div>
   );
 }
