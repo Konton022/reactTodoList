@@ -1,5 +1,5 @@
 import "./styles.css";
-import { Button, Form, ListGroup } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import TaskList from "./components/TaskList/index";
@@ -45,22 +45,25 @@ export default function App() {
           Submit
         </Button>
       </Form>
-      <ListGroup className="mb-3 tasks">
-        {todoList.map(({ id, task, isDone }, index) => (
-          <ListGroup.Item key={index}>
-            <span> {id} </span>
-            <span> {task} </span>
-            <Button
-              variant="secondary"
-              className="btn btn-sm "
-              onClick={(id) => handleDelTask}
-            >
-              {" "}
-              delete{" "}
-            </Button>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>task</th>
+            <th>isDone</th>
+            <th>delete task</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todoList.map(({ id, task, isDone }, index) => {
+          return (<tr key={index}>
+            <td>{id}</td>
+            <td>{task}</td>
+            <td>{isDone? 'Yes':'No'}</td>
+            <td><Button onClick={(id)=>console.log(id)}>delete</Button></td>
+          </tr>)})}
+        </tbody>
+      </Table>
     </div>
   );
 }
