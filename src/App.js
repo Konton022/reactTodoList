@@ -7,7 +7,7 @@ import TaskList from "./components/TaskList/index";
 const initState = [
   { id: 1, task: "buy fresh bread", isDone: false },
   { id: 2, task: "pay for rent", isDone: false },
-  { id: 3, task: "do homework", isDone: false }
+  { id: 3, task: "do homework", isDone: false },
 ];
 
 export default function App() {
@@ -27,6 +27,7 @@ export default function App() {
 
   function handleDelTask(id) {
     console.log(id);
+    setToDoList(todoList.filter((item) => item.id !== id));
   }
 
   return (
@@ -41,11 +42,13 @@ export default function App() {
             onChange={handleAddTask}
           ></Form.Control>
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Submit
-        </Button>
+        <Form.Group>
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </Form.Group>
       </Form>
-      <Table striped bordered hover>
+      <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>id</th>
@@ -56,12 +59,23 @@ export default function App() {
         </thead>
         <tbody>
           {todoList.map(({ id, task, isDone }, index) => {
-          return (<tr key={index}>
-            <td>{id}</td>
-            <td>{task}</td>
-            <td>{isDone? 'Yes':'No'}</td>
-            <td><Button onClick={(id)=>console.log(id)}>delete</Button></td>
-          </tr>)})}
+            return (
+              <tr key={index}>
+                <td>{id}</td>
+                <td>{task}</td>
+                <td>{isDone ? "Yes" : "No"}</td>
+                <td>
+                  <Button
+                    onClick={() => handleDelTask(id)}
+                    size="sm"
+                    variant="secondary"
+                  >
+                    delete
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>
