@@ -1,23 +1,21 @@
 import "./styles.css";
+import React from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
 
-import TaskList from "./components/TaskList/index";
-let initId = 3;
-const initState = [
-  { id: 1, task: "buy fresh bread", isDone: false },
-  { id: 2, task: "pay for rent", isDone: false },
-  { id: 3, task: "do homework", isDone: false },
-];
+const initState = [];
 
 export default function App() {
   const [todoList, setToDoList] = useState(initState);
   const [task, setTask] = useState("");
+  const [isDone, setDone] = useState(false);
   console.log(todoList, task);
 
   function handleSubmit(event) {
     event.preventDefault();
-    setToDoList([...todoList, task]);
+    const id = nanoid(4);
+    setToDoList([...todoList, { task, id, isDone }]);
     setTask("");
   }
 
@@ -28,12 +26,24 @@ export default function App() {
   function handleDelTask(id) {
     setToDoList(todoList.filter((item) => item.id !== id));
   }
+  function handleSetDone(id) {
+    // console.log(id);
+    setToDoList(
+      todoList.map((item) => {
+        if (item.id == id) {
+          console.log("item", item);
+          item.isDone = !item.isDone;
+        }
+        return item;
+      })
+    );
+  }
 
   return (
     <div className="App">
       <Form className="toDoTask">
         <Form.Group className="mb-3">
-          <Form.Label>Add your TASK</Form.Label>
+          <Form.Label>Task manager</Form.Label>
           <Form.Control
             value={task}
             type="text"
@@ -55,12 +65,20 @@ export default function App() {
           </tr>
         </thead>
         <tbody>
-          {todoList.map(({ id, task, isDone }, index) => {
+          {todoList.map(({ id, task, isDone }) => {
             return (
-              <tr key={index}>
+              <tr key={id}>
                 <td>{id}</td>
                 <td>{task}</td>
-                <td>{isDone ? "Yes" : "No"}</td>
+                <td>
+                  <Button
+                    onClick={() => handleSetDone(id)}
+                    size="sm"
+                    variant={isDone ? "primary" : "secondary"}
+                  >
+                    {isDone ? "Yes" : "No"}
+                  </Button>
+                </td>
                 <td>
                   <Button
                     onClick={() => handleDelTask(id)}
