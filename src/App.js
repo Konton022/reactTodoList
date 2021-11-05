@@ -1,7 +1,7 @@
 import "./styles.css";
 import React from "react";
 import { Button, Form, Table } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 
 const initState = [];
@@ -30,7 +30,7 @@ export default function App() {
     // console.log(id);
     setToDoList(
       todoList.map((item) => {
-        if (item.id == id) {
+        if (item.id === id) {
           console.log("item", item);
           item.isDone = !item.isDone;
         }
@@ -55,20 +55,20 @@ export default function App() {
           </Button>
         </Form.Group>
       </Form>
-      <Table striped bordered hover size="sm">
+      <Table striped bordered hover size="sm" className="taskTable">
         <thead>
           <tr>
-            <th>id</th>
+            <th>#</th>
             <th>task</th>
             <th>isDone</th>
             <th>delete task</th>
           </tr>
         </thead>
         <tbody>
-          {todoList.map(({ id, task, isDone }) => {
+          {todoList.map(({ id, task, isDone }, index) => {
             return (
               <tr key={id}>
-                <td>{id}</td>
+                <td>{index + 1}</td>
                 <td>{task}</td>
                 <td>
                   <Button
