@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import ReacTableCellOM from "react-dom";
 import React from "react";
 
 import App from "./App";
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
+ReacTableCellOM.render(
   <StrictMode>
     <App />
   </StrictMode>,

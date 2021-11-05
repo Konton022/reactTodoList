@@ -3,8 +3,9 @@ import React from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import TaskTable from "./components/TaskTable";
 
-const initState = [];
+const initState = [{ id: 1, task: "hello", isDone: false }];
 
 export default function App() {
   const [todoList, setToDoList] = useState(initState);
@@ -23,10 +24,10 @@ export default function App() {
     setTask(event.target.value);
   }
 
-  function handleDelTask(id) {
+  function delTask(id) {
     setToDoList(todoList.filter((item) => item.id !== id));
   }
-  function handleSetDone(id) {
+  function setTaskDone(id) {
     // console.log(id);
     setToDoList(
       todoList.map((item) => {
@@ -55,7 +56,7 @@ export default function App() {
           </Button>
         </Form.Group>
       </Form>
-      <Table striped bordered hover size="sm" className="taskTable">
+      {/* <Table striped bordered hover size="sm" className="taskTable">
         <thead>
           <tr>
             <th>#</th>
@@ -68,18 +69,18 @@ export default function App() {
           {todoList.map(({ id, task, isDone }, index) => {
             return (
               <tr key={id}>
-                <td>{index + 1}</td>
-                <td>{task}</td>
-                <td>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{task}</TableCell>
+                <TableCell>
                   <Button
-                    onClick={() => handleSetDone(id)}
+                    onClick={() => handleSeTableCellone(id)}
                     size="sm"
                     variant={isDone ? "primary" : "secondary"}
                   >
                     {isDone ? "Yes" : "No"}
                   </Button>
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                   <Button
                     onClick={() => handleDelTask(id)}
                     size="sm"
@@ -87,12 +88,18 @@ export default function App() {
                   >
                     delete
                   </Button>
-                </td>
+                </TableCell>
               </tr>
             );
           })}
         </tbody>
-      </Table>
+      </Table> */}
+
+      <TaskTable
+        tasksList={todoList}
+        handleDelete={delTask}
+        handleSetDone={setTaskDone}
+      />
     </div>
   );
 }
