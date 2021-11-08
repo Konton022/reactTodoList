@@ -11,7 +11,6 @@ export default function App() {
   const [todoList, setToDoList] = useState(initState);
   const [task, setTask] = useState("");
   const [isDone, setDone] = useState(false);
-  console.log(todoList, task);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -56,45 +55,6 @@ export default function App() {
           </Button>
         </Form.Group>
       </Form>
-      {/* <Table striped bordered hover size="sm" className="taskTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>task</th>
-            <th>isDone</th>
-            <th>delete task</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todoList.map(({ id, task, isDone }, index) => {
-            return (
-              <tr key={id}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{task}</TableCell>
-                <TableCell>
-                  <Button
-                    onClick={() => handleSeTableCellone(id)}
-                    size="sm"
-                    variant={isDone ? "primary" : "secondary"}
-                  >
-                    {isDone ? "Yes" : "No"}
-                  </Button>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    onClick={() => handleDelTask(id)}
-                    size="sm"
-                    variant="secondary"
-                  >
-                    delete
-                  </Button>
-                </TableCell>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table> */}
-
       <TaskTable
         tasksList={todoList}
         handleDelete={delTask}

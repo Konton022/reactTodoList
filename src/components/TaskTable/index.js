@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import Switch from "@mui/material/Switch";
 
 export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
   return (
@@ -25,9 +26,7 @@ export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{task}</TableCell>
                 <TableCell>
-                  <Button onClick={() => handleSetDone(id)}>
-                    {isDone ? "Yes" : "No"}
-                  </Button>
+                  <Switch checked={isDone} onClick={() => handleSetDone(id)} />
                 </TableCell>
                 <TableCell>
                   <Button onClick={() => handleDelete(id)}>delete</Button>
