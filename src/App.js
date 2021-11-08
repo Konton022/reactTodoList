@@ -1,6 +1,13 @@
 import "./styles.css";
 import React from "react";
-import { Button, Form, Table } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import {
+  FormGroup,
+  FormControl,
+  FormLabel,
+  Input,
+  InputLabel,
+} from "@mui/material";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import TaskTable from "./components/TaskTable";
@@ -41,20 +48,23 @@ export default function App() {
 
   return (
     <div className="App">
-      <Form className="toDoTask">
-        <Form.Group className="mb-3">
-          <Form.Label>Task manager</Form.Label>
-          <Form.Control
-            value={task}
-            type="text"
-            placeholder="enter your text"
-            onChange={handleAddTask}
-          ></Form.Control>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Form.Group>
-      </Form>
+      <FormGroup className="mb-3">
+        <FormLabel>Task manager</FormLabel>
+        <FormControl
+          value={task}
+          type="text"
+          placeholder="enter your task"
+          onChange={handleAddTask}
+        >
+          <InputLabel>write your task here</InputLabel>
+          <Input />
+        </FormControl>
+
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
+          Submit
+        </Button>
+      </FormGroup>
+
       <TaskTable
         tasksList={todoList}
         handleDelete={delTask}
