@@ -12,7 +12,7 @@ import Switch from "@mui/material/Switch";
 export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: "80%" }}>
         <TableHead>
           <TableCell>#</TableCell>
           <TableCell>Task</TableCell>
@@ -24,7 +24,11 @@ export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
             return (
               <TableRow key={id}>
                 <TableCell>{index + 1}</TableCell>
-                <TableCell>{task}</TableCell>
+
+                <TableCell sx={{ color: "red", width: "60%" }}>
+                  {task}
+                </TableCell>
+
                 <TableCell>
                   <Switch checked={isDone} onClick={() => handleSetDone(id)} />
                 </TableCell>
