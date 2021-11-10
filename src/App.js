@@ -7,6 +7,8 @@ import {
   FormLabel,
   Input,
   InputLabel,
+  Paper,
+  TextField,
 } from "@mui/material";
 import { useState } from "react";
 import { nanoid } from "nanoid";
@@ -48,22 +50,21 @@ export default function App() {
 
   return (
     <div className="App">
-      <FormGroup className="mb-3">
-        <FormLabel>Task manager</FormLabel>
-        <FormControl
+      <Paper sx={{ minWidth: "80%" }}>
+        <h2>Task manager</h2>
+        <TextField
+          margin="normal"
+          fullWidth="true"
           value={task}
           type="text"
           placeholder="enter your task"
           onChange={handleAddTask}
-        >
-          <InputLabel>write your task here</InputLabel>
-          <Input />
-        </FormControl>
+        />
 
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
-      </FormGroup>
+      </Paper>
 
       <TaskTable
         tasksList={todoList}
