@@ -9,7 +9,22 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 
-export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
+export default function TaskTable({ tasksList, setList }) {
+  function handleDelTask(id) {
+    setList(tasksList.filter((item) => item.id !== id));
+  }
+  function handleSetDone(id) {
+    // console.log(id);
+    setList(
+      tasksList.map((item) => {
+        if (item.id === id) {
+          console.log("item", item);
+          item.isDone = !item.isDone;
+        }
+        return item;
+      })
+    );
+  }
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: "80%" }}>
@@ -33,7 +48,7 @@ export default function TaskTable({ tasksList, handleSetDone, handleDelete }) {
                   <Switch checked={isDone} onClick={() => handleSetDone(id)} />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleDelete(id)}>delete</Button>
+                  <Button onClick={() => handleDelTask(id)}>delete</Button>
                 </TableCell>
               </TableRow>
             );
