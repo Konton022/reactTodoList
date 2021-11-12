@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Input } from "react-bootstrap";
 
 export default function TaskTable({ tasksList, setList }) {
   function handleDelTask(id) {
@@ -36,7 +36,11 @@ export default function TaskTable({ tasksList, setList }) {
               <td sx={{ color: "red", width: "60%" }}>{task}</td>
 
               <td>
-                <Switch checked={isDone} onClick={() => handleSetDone(id)} />
+                <Input
+                  type="switches"
+                  checked={isDone}
+                  onClick={() => handleSetDone(id)}
+                />
               </td>
               <td>
                 <Button onClick={() => handleDelTask(id)}>delete</Button>
