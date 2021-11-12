@@ -1,13 +1,5 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import Switch from "@mui/material/Switch";
+import { Table, Button } from "react-bootstrap";
 
 export default function TaskTable({ tasksList, setList }) {
   function handleDelTask(id) {
@@ -26,35 +18,33 @@ export default function TaskTable({ tasksList, setList }) {
     );
   }
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: "80%" }}>
-        <TableHead>
-          <TableCell>#</TableCell>
-          <TableCell>Task</TableCell>
-          <TableCell>Done?</TableCell>
-          <TableCell>Delete</TableCell>
-        </TableHead>
-        <TableBody>
-          {tasksList.map(({ id, task, isDone }, index) => {
-            return (
-              <TableRow key={id}>
-                <TableCell>{index + 1}</TableCell>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Task</th>
+          <th>Done?</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tasksList.map(({ id, task, isDone }, index) => {
+          return (
+            <tr key={id}>
+              <td>{index + 1}</td>
 
-                <TableCell sx={{ color: "red", width: "60%" }}>
-                  {task}
-                </TableCell>
+              <td sx={{ color: "red", width: "60%" }}>{task}</td>
 
-                <TableCell>
-                  <Switch checked={isDone} onClick={() => handleSetDone(id)} />
-                </TableCell>
-                <TableCell>
-                  <Button onClick={() => handleDelTask(id)}>delete</Button>
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+              <td>
+                <Switch checked={isDone} onClick={() => handleSetDone(id)} />
+              </td>
+              <td>
+                <Button onClick={() => handleDelTask(id)}>delete</Button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
   );
 }
