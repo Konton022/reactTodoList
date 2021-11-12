@@ -21,11 +21,11 @@ export default function TaskTable({ tasksList, setList }) {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>#</th>
-          <th>#</th>
-          <th>Task</th>
-          <th>Done?</th>
-          <th>Delete</th>
+          <th className="col-md-1">#</th>
+          <th className="col-md-1">id</th>
+          <th className="col-md-8">Task</th>
+          <th className="col-md-1">Done?</th>
+          <th className="col-md-1">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -44,7 +44,9 @@ export default function TaskTable({ tasksList, setList }) {
                 />
               </td>
               <td>
-                <Button onClick={() => handleDelTask(id)}>delete</Button>
+                <Button size="sm" onClick={() => handleDelTask(id)}>
+                  delete
+                </Button>
               </td>
             </tr>
           );
