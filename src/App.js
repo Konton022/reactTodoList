@@ -1,8 +1,11 @@
 import "./styles.css";
 import React from "react";
+import { slice } from "./store/task";
 import { useState } from "react";
 import TaskTable from "./components/TaskTable";
 import TaskForm from "./components/TaskForm/TaskForm";
+
+console.log("slice", slice);
 
 const initState = [{ id: 1, task: "hello", isDone: false }];
 
