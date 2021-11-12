@@ -1,7 +1,7 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { nanoid } from "nanoid";
 
 const TaskForm = ({ tasksList, setList }) => {
   const [task, setTask] = useState("");

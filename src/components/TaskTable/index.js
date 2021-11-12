@@ -22,6 +22,7 @@ export default function TaskTable({ tasksList, setList }) {
       <thead>
         <tr>
           <th>#</th>
+          <th>#</th>
           <th>Task</th>
           <th>Done?</th>
           <th>Delete</th>
@@ -32,13 +33,13 @@ export default function TaskTable({ tasksList, setList }) {
           return (
             <tr key={id}>
               <td>{index + 1}</td>
-
-              <td sx={{ color: "red", width: "60%" }}>{task}</td>
+              <td>{id}</td>
+              <td>{task}</td>
 
               <td>
-                <Input
-                  type="switches"
-                  checked={isDone}
+                <input
+                  type="checkbox"
+                  defaultChecked={isDone}
                   onClick={() => handleSetDone(id)}
                 />
               </td>
