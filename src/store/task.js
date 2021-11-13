@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
-const initialState = {
-  isLoading: false,
-  data: [],
-};
 
 export const slice = createSlice({
   name: "taskManager",
-  initialState,
+  initialState: {
+    isLoading: false,
+    data: [],
+  },
   reducers: {
     addTask(state, action) {
-      return state.push({ task: action.payload, isDone: false });
+      state;
     },
     delTask(state, action) {
       state;
