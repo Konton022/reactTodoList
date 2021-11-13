@@ -18,4 +18,8 @@ export const slice = createSlice({
   },
 });
 export const { addTask, delTask, setDone } = slice.actions;
+
+export const selectTaskData = (state) => {
+  state.task;
+};
 export default slice.reducer;
