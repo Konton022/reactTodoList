@@ -19,8 +19,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <TaskForm tasksList={todoList} setList={setToDoList} />
-      <TaskTable tasksList={todoList} setList={setToDoList} />
+      <TaskForm />
+      <TaskTable />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const TaskForm = ({ tasksList, setList }) => {
+const TaskForm = () => {
   const taskRedux = useSelector((state) => state.tasks.data);
   const dispatch = useDispatch();
   const [task, setTask] = useState("");

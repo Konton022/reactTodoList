@@ -1,7 +1,17 @@
-import * as React from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { Table, Button, Input } from "react-bootstrap";
 
-export default function TaskTable({ tasksList, setList }) {
+export default function TaskTable() {
+  const taskReducer = useSelector((state) => state.tasks.data);
+  const [tasksList, setList] = useState(taskReducer);
+  // console.log("TT taskReducer", taskReducer);
+
+  useEffect(() => {
+    setList(taskReducer);
+  }, [taskReducer]);
+
   function handleDelTask(id) {
     setList(tasksList.filter((item) => item.id !== id));
   }
