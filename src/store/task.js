@@ -5,15 +5,13 @@ export const slice = createSlice({
   name: "tasks",
   initialState: {
     isLoading: false,
-    data: [{ id: nanoid(4), task: "do somethink", isDone: false }],
+    data: [],
   },
   reducers: {
-    addTask(state, action) {
-      state;
+    addTask: (state, action) => {
+      state.data.push({ task: action.payload, id: nanoid(4), isDone: false });
     },
-    delTask(state, action) {
-      state;
-    },
+    delTask(state, action) {},
     setDone(state, action) {
       state;
     },

@@ -7,13 +7,12 @@ import TaskForm from "./components/TaskForm/TaskForm";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, delTask, setDone } from "./store/task";
 
-console.log("slice", slice);
+//console.log("slice", slice);
 
-const initState = [{ id: 1, task: "hello", isDone: false }];
+//const initState = [{ id: 1, task: "hello", isDone: false }];
 
 export default function App() {
   const taskRedux = useSelector((state) => state.tasks.data);
-  const dispatch = useDispatch();
 
   console.log("taskRedux", taskRedux);
   const [todoList, setToDoList] = useState(taskRedux);

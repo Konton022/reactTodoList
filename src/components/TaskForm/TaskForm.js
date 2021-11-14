@@ -1,17 +1,23 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addTask } from "../../store/task";
+
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 const TaskForm = ({ tasksList, setList }) => {
+  const taskRedux = useSelector((state) => state.tasks.data);
+  const dispatch = useDispatch();
   const [task, setTask] = useState("");
   const [isDone, setDone] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
-    const id = nanoid(4);
-    setList([...tasksList, { task, id, isDone }]);
-    setTask("");
+    // const id = nanoid(4);
+    // setList([...tasksList, { task, id, isDone }]);
+    // setTask("");
+    dispatch(addTask(task));
   }
 
   function handleAddTask(event) {
