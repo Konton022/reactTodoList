@@ -1,11 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { selectTaskData } from "../../store/task";
+import { delTask } from "../../store/task";
+
 import { useState, useEffect } from "react";
-import { Table, Button, Input } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 export default function TaskTable() {
-  const taskReducer = useSelector((state) => state.tasks.data);
+  const taskReducer = useSelector(selectTaskData);
   const [tasksList, setList] = useState(taskReducer);
+  const dispatch = useDispatch();
   // console.log("TT taskReducer", taskReducer);
 
   useEffect(() => {
@@ -13,7 +17,10 @@ export default function TaskTable() {
   }, [taskReducer]);
 
   function handleDelTask(id) {
-    setList(tasksList.filter((item) => item.id !== id));
+    console.log("id", id, taskReducer);
+
+    //setList(tasksList.filter((item) => item.id !== id));
+    dispatch(delTask(id));
   }
   function handleSetDone(id) {
     // console.log(id);

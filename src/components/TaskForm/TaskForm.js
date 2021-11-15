@@ -1,15 +1,14 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTask } from "../../store/task";
 
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 const TaskForm = () => {
-  const taskRedux = useSelector((state) => state.tasks.data);
   const dispatch = useDispatch();
   const [task, setTask] = useState("");
-  const [isDone, setDone] = useState(false);
+  //const [isDone, setDone] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();

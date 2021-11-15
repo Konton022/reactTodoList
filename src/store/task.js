@@ -16,10 +16,10 @@ export const slice = createSlice({
         isDone: false
       });
     },
-    delTask(state, action) {},
-    setDone(state, action) {
-      state;
-    }
+    delTask: (state, action) => {
+      state.data.filter((item) => item.id !== action.payload);
+    },
+    setDone(state, action) {}
   }
 });
 export const { addTask, delTask, setDone } = slice.actions;
