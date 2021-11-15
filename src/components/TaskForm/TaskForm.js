@@ -17,6 +17,7 @@ const TaskForm = () => {
     // setList([...tasksList, { task, id, isDone }]);
     // setTask("");
     dispatch(addTask(task));
+    setTask("");
   }
 
   function handleAddTask(event) {

@@ -10,7 +10,7 @@ export const slice = createSlice({
   reducers: {
     addTask: (state, action) => {
       //const itemId = nanoid
-      return state.data.push({
+      state.data.push({
         task: action.payload,
         id: nanoid(4),
         isDone: false
