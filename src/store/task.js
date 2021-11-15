@@ -5,22 +5,36 @@ export const slice = createSlice({
   name: "tasks",
   initialState: {
     isLoading: false,
-    data: []
+    data: [],
   },
   reducers: {
-    addTask: (state, action) => {
-      //const itemId = nanoid
-      state.data.push({
-        task: action.payload,
-        id: nanoid(4),
-        isDone: false
-      });
-    },
-    delTask: (state, action) => {
-      state.data.filter((item) => item.id !== action.payload);
-    },
-    setDone(state, action) {}
-  }
+    addTask: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [
+        ...state.data,
+        {
+          task: action.payload,
+          id: nanoid(4),
+          isDone: false,
+        },
+      ],
+    }),
+    delTask: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: state.data.filter((item) => item.id !== action.payload),
+    }),
+    setDone: (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: state.data.map((item) => {
+        item.id === action.payload
+          ? { ...(isDone = true) }
+          : { ...(isDone = false) };
+      }),
+    }),
+  },
 });
 export const { addTask, delTask, setDone } = slice.actions;
 

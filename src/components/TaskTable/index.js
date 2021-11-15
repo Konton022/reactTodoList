@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTaskData } from "../../store/task";
-import { delTask } from "../../store/task";
+import { delTask, setDone } from "../../store/task";
 
 import { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
@@ -24,15 +24,16 @@ export default function TaskTable() {
   }
   function handleSetDone(id) {
     // console.log(id);
-    setList(
-      tasksList.map((item) => {
-        if (item.id === id) {
-          console.log("item", item);
-          item.isDone = !item.isDone;
-        }
-        return item;
-      })
-    );
+    // setList(
+    //   tasksList.map((item) => {
+    //     if (item.id === id) {
+    //       console.log("item", item);
+    //       item.isDone = !item.isDone;
+    //     }
+    //     return item;
+    //   })
+    // );
+    dispatch(setDone(id));
   }
   return (
     <Table striped bordered hover>
