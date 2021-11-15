@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask } from "../../store/task";
 
-import { nanoid } from "nanoid";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
