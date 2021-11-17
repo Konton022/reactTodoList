@@ -1,16 +1,25 @@
-import "./styles.css";
+//import "./styles.css";
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import TaskTable from "./components/TaskTable";
-import TaskForm from "./components/TaskForm/TaskForm";
 import Navibar from "./components/Navibar/Navibar";
+
+import Home from "./Routes/Home";
+import Projects from "./Routes/Projects";
+import Contact from "./Routes/Contact";
 
 export default function App() {
   return (
     <div className="App">
-      <Navibar />
-      <TaskForm />
-      <TaskTable />
+      <Router>
+        <Navibar />
+
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/Contact" component={Contact} />
+        </Switch>
+      </Router>
     </div>
   );
 }
