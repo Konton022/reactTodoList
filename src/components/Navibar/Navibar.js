@@ -9,9 +9,15 @@ export default function Navibar() {
         <Navbar.Toggle aria-controls="root-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav>Home</Nav>
-            <Nav>Projects</Nav>
-            <Nav>Contact me</Nav>
+            <Nav.Link>
+              <Link>Home</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link>Projects</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link>Contact me</Link>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Button className="m-2">Log In</Button>
