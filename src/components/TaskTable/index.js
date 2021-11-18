@@ -1,21 +1,39 @@
-import * as React from "react";
-import { Table, Button, Input } from "react-bootstrap";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectTaskData } from "../../store/task";
+import { delTask, setDone } from "../../store/task";
 
-export default function TaskTable({ tasksList, setList }) {
+import { useState, useEffect } from "react";
+import { Table, Button } from "react-bootstrap";
+
+export default function TaskTable() {
+  const taskReducer = useSelector(selectTaskData);
+  const [tasksList, setList] = useState(taskReducer);
+  const dispatch = useDispatch();
+  // console.log("TT taskReducer", taskReducer);
+
+  useEffect(() => {
+    setList(taskReducer);
+  }, [taskReducer]);
+
   function handleDelTask(id) {
-    setList(tasksList.filter((item) => item.id !== id));
+    console.log("id", id, taskReducer);
+
+    //setList(tasksList.filter((item) => item.id !== id));
+    dispatch(delTask(id));
   }
   function handleSetDone(id) {
     // console.log(id);
-    setList(
-      tasksList.map((item) => {
-        if (item.id === id) {
-          console.log("item", item);
-          item.isDone = !item.isDone;
-        }
-        return item;
-      })
-    );
+    // setList(
+    //   tasksList.map((item) => {
+    //     if (item.id === id) {
+    //       console.log("item", item);
+    //       item.isDone = !item.isDone;
+    //     }
+    //     return item;
+    //   })
+    // );
+    dispatch(setDone(id));
   }
   return (
     <Table striped bordered hover>

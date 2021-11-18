@@ -1,21 +1,25 @@
-import "./styles.css";
+//import "./styles.css";
 import React from "react";
-import { slice } from "./store/task";
-import { useState } from "react";
-import TaskTable from "./components/TaskTable";
-import TaskForm from "./components/TaskForm/TaskForm";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-console.log("slice", slice);
+import Navibar from "./components/Navibar/Navibar";
 
-const initState = [{ id: 1, task: "hello", isDone: false }];
+import Home from "./Routes/Home";
+import Projects from "./Routes/Projects";
+import Contact from "./Routes/Contact";
 
 export default function App() {
-  const [todoList, setToDoList] = useState(initState);
-
   return (
     <div className="App">
-      <TaskForm tasksList={todoList} setList={setToDoList} />
-      <TaskTable tasksList={todoList} setList={setToDoList} />
+      <Router>
+        <Navibar />
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/Contact" component={Contact} />
+        </Switch>
+      </Router>
     </div>
   );
 }
