@@ -11,15 +11,13 @@ import Contact from "./Routes/Contact";
 export default function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navibar />
+      <Navibar />
 
-        <Routes>
-          <Route exact path="/" component={Home} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/contact" component={Contact} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </div>
   );
 }
