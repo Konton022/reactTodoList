@@ -29,9 +29,9 @@ export const slice = createSlice({
       ...state,
       isLoading: false,
       data: state.data.map((item) => {
-        item.id === action.payload
-          ? { ...(isDone = true) }
-          : { ...(isDone = false) };
+        if (item.id === action.payload) {
+          return (item.isDone = true);
+        }
       }),
     }),
   },

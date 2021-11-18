@@ -1,6 +1,6 @@
 //import "./styles.css";
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navibar from "./components/Navibar/Navibar";
 
@@ -14,11 +14,11 @@ export default function App() {
       <BrowserRouter>
         <Navibar />
 
-        <Switch>
+        <Routes>
           <Route exact path="/" component={Home} />
           <Route path="/projects" component={Projects} />
-          <Route path="/Contact" component={Contact} />
-        </Switch>
+          <Route path="/contact" component={Contact} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

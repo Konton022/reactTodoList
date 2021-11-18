@@ -2,7 +2,7 @@ import React from "react";
 import TaskTable from "../components/TaskTable/index";
 import TaskForm from "../components/TaskForm/TaskForm";
 
-export default function Projects() {
+function Projects() {
   return (
     <>
       <TaskForm />
@@ -10,3 +10,5 @@ export default function Projects() {
     </>
   );
 }
+
+export default Projects;
