@@ -7,7 +7,7 @@ import Navibar from "./components/Navibar/Navibar";
 import Home from "./Routes/Home";
 import Projects from "./Routes/Projects";
 import Contact from "./Routes/Contact";
-import Footer from "./components/Footer/Footter";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (
