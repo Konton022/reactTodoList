@@ -58,11 +58,11 @@ export default function TaskTable() {
                 <input
                   type="checkbox"
                   defaultChecked={isDone}
-                  onClick={() => handleSetDone(id)}
+                  onClick={() => handleDelTask(id)}
                 />
               </td>
               <td>
-                <Button size="sm" onClick={() => handleDelTask(id)}>
+                <Button size="sm" onClick={() => handleSetDone(id)}>
                   delete
                 </Button>
               </td>
