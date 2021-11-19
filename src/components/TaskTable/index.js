@@ -18,21 +18,10 @@ export default function TaskTable() {
 
   function handleDelTask(id) {
     console.log("id", id, taskReducer);
-
-    //setList(tasksList.filter((item) => item.id !== id));
     dispatch(delTask(id));
   }
   function handleSetDone(id) {
-    // console.log(id);
-    // setList(
-    //   tasksList.map((item) => {
-    //     if (item.id === id) {
-    //       console.log("item", item);
-    //       item.isDone = !item.isDone;
-    //     }
-    //     return item;
-    //   })
-    // );
+    console.log("del Task id", id);
     dispatch(setDone(id));
   }
   return (
@@ -58,11 +47,11 @@ export default function TaskTable() {
                 <input
                   type="checkbox"
                   defaultChecked={isDone}
-                  onClick={() => handleDelTask(id)}
+                  onClick={() => handleSetDone(id)}
                 />
               </td>
               <td>
-                <Button size="sm" onClick={() => handleSetDone(id)}>
+                <Button size="sm" onClick={() => handleDelTask(id)}>
                   delete
                 </Button>
               </td>
