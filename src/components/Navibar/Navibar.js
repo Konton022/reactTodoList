@@ -1,11 +1,18 @@
 import React from "react";
-import { Nav, Navbar, Container, Button } from "react-bootstrap";
+import { Nav, Navbar, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function Navibar() {
   return (
-    <Container>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="sm"
+      sticky="top"
+      fixed="top"
+      bg="dark"
+      variant="dark"
+    >
+      <Container>
         <Navbar.Brand>Test Page</Navbar.Brand>
         <Navbar.Toggle aria-controls="root-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -21,9 +28,10 @@ export default function Navibar() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
+
         <Button className="m-2">Log In</Button>
         <Button>Sing In</Button>
-      </Navbar>
-    </Container>
+      </Container>
+    </Navbar>
   );
 }

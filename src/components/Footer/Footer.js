@@ -1,14 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 const Footer = () => {
   return (
-    <Container variant="dark" bg="dark" className="mb-0">
-      <Row>
-        <Col></Col>
-        <Col md={10}>2021</Col>
-        <Col></Col>
-      </Row>
-    </Container>
+    <Navbar variant="light" bg="light" fixed="bottom">
+      <Navbar.Brand href="#">Footer</Navbar.Brand>
+      <Navbar.Text>all rights reserved @ 2021 </Navbar.Text>
+    </Navbar>
   );
 };
 
