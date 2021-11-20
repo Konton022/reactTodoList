@@ -29,8 +29,12 @@ export const slice = createSlice({
       ...state,
       isLoading: false,
       data: state.data.map((item) => {
-        if (item.id === action.payload) {
-          return (item.isDone = true);
+        if (item.id !== action.payload) {
+          {
+            return item;
+          }
+        } else {
+          return { ...item, isDone: true };
         }
       }),
     }),
