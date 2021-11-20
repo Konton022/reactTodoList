@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTaskData } from "../../store/task";
 import { delTask, setDone } from "../../store/task";
+import edit from "./edit.png";
 
 import { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
@@ -41,7 +42,17 @@ export default function TaskTable() {
             <tr key={id}>
               <td>{index + 1}</td>
               <td>{id}</td>
-              <td>{task}</td>
+              <td>
+                {task}{" "}
+                <img
+                  className="align-self-end"
+                  src={edit}
+                  alt="edit logo"
+                  width="13"
+                  height="13"
+                  onClick={() => console.log(id)}
+                />
+              </td>
 
               <td>
                 <input
