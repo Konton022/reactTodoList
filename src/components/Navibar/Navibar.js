@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Nav, Navbar, Button, Container, Modal, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import UserModal from "../UserModal/UserModal";
 import logo from "./logo.svg";
 
 export default function Navibar() {
@@ -44,33 +45,7 @@ export default function Navibar() {
       <Button className="m-2" size="sm" onClick={() => setOpen(true)}>
         Sing In
       </Button>
-      <Modal
-        show={open}
-        onHide={() => setOpen(false)}
-        dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
-            Sing In
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Control
-              type="email"
-              placeholder="enter the Email"
-              className="m-2"
-            ></Form.Control>
-            <Form.Control
-              type="password"
-              className="m-2"
-              placeholder="enter your password"
-            ></Form.Control>
-            <Button>Submit</Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
+      <UserModal open={open} setOpen={setOpen} />
     </Navbar>
   );
 }
