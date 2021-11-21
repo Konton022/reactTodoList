@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
 
 const UserModal = ({ open, setOpen }) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   console.log("email: ", email, "password", password);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    dispatch(addUser({ email, password }));
+    setOpen(false);
+  }
   return (
     <Modal
       show={open}
@@ -20,7 +28,7 @@ const UserModal = ({ open, setOpen }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Control
             type="email"
             placeholder="enter the Email"
