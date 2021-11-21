@@ -23,7 +23,7 @@ export default function Navibar() {
           height="45"
           className="d-inline-block align-top"
         />
-        SAV GROUP
+        CV Page
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="root-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -33,7 +33,7 @@ export default function Navibar() {
           </Nav.Link>
 
           <Nav.Link>
-            <Link to="/projects">reactToDoList</Link>
+            <Link to="/projects">Todo list</Link>
           </Nav.Link>
           <Nav.Link>
             <Link to="/contact">Contact</Link>
