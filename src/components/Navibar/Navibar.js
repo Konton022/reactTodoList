@@ -1,9 +1,10 @@
 import React from "react";
+
 import { useState } from "react";
 import { Nav, Navbar, Button, Container, Modal, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import UserModal from "../UserModal/UserModal";
-import logo from "./logo.svg";
+import logo from "./logo2.png";
 
 export default function Navibar() {
   const [open, setOpen] = useState(false);
@@ -24,21 +25,20 @@ export default function Navibar() {
           height="45"
           className="d-inline-block align-top"
         />
-        CV Page
+        Konstantin's page
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="root-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
-          <Nav.Link>
+        <Nav className="me-auto ">
+          <Nav.Item>
             <Link to="/">Home</Link>
-          </Nav.Link>
-
-          <Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Link to="/projects">Todo list</Link>
-          </Nav.Link>
-          <Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Link to="/contact">Contact</Link>
-          </Nav.Link>
+          </Nav.Item>
         </Nav>
       </Navbar.Collapse>
 

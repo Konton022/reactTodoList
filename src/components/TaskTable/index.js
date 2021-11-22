@@ -22,7 +22,6 @@ export default function TaskTable() {
     dispatch(delTask(id));
   }
   function handleSetDone(id) {
-    console.log("del Task id", id);
     dispatch(setDone(id));
   }
   return (

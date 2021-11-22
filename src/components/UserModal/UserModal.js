@@ -8,10 +8,9 @@ const UserModal = ({ open, setOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log("email: ", email, "password", password);
-
   function handleSubmit(event) {
     event.preventDefault();
+    console.log("email: ", email, "password", password);
     dispatch(addUser({ email, password }));
     setOpen(false);
   }
@@ -45,7 +44,7 @@ const UserModal = ({ open, setOpen }) => {
               setPassword(event.target.value);
             }}
           ></Form.Control>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </Form>
       </Modal.Body>
     </Modal>

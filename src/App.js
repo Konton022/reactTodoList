@@ -1,4 +1,4 @@
-//import "./styles.css";
+import "./styles.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default function App() {
           <Col></Col>
           <Col lg={10}>
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Projects />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
