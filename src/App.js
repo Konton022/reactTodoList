@@ -1,7 +1,7 @@
 import "./styles.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import FirebaseClass from "./service/firebase";
+// import { auth, database } from "./service/firebase";
 
 import Navibar from "./components/Navibar/Navibar";
 
@@ -12,7 +12,7 @@ import Footer from "./components/Footer/Footer";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function App() {
-  //console.log("firebaseClass", FirebaseClass);
+  // console.log("auth", auth, "database", database);
 
   return (
     <div className="App">

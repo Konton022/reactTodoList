@@ -1,7 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import firebase from "firebase/compat/app";
-import "firebase/compat/database";
+import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {} from "firebase/database";
+import {} from "firebase/auth";
+// import firebase from "firebase/compat/app";
+// import "firebase/compat/database";
+// import "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,22 +17,14 @@ const firebaseConfig = {
   projectId: "reacttodolist-d9b95",
   storageBucket: "reacttodolist-d9b95.appspot.com",
   messagingSenderId: "897290124129",
-  appId: "1:897290124129:web:a48b57f045e88c92076320"
+  appId: "1:897290124129:web:a48b57f045e88c92076320",
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-class Firebase {
-  constructor() {
-    this.fire = firebase;
-    this.database = this.fire.database();
-  }
-  postTask = (key, task) => {
-    this.database.ref(`tasks/${key}`).update(task);
-  };
-}
+const auth = firebase.auth();
+const database = firebase.database();
 
-const FirebaseClass = new Firebase();
-
-export default FirebaseClass;
+export { auth, database };
