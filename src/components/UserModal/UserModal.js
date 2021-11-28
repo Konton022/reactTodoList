@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../store/user";
-import { Modal, Form, Button } from "react-bootstrap";
+import { Modal, Form, Button, Row } from "react-bootstrap";
 
 const UserModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signType, setSignType] = useState("Sign Up");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,7 +25,7 @@ const UserModal = ({ open, setOpen }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-custom-modal-styling-title">
-          Sign please....
+          Sign please...
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -45,6 +46,10 @@ const UserModal = ({ open, setOpen }) => {
               setPassword(event.target.value);
             }}
           ></Form.Control>
+          <Form.Group as={Row} className="m-2">
+            <Form.Check type="radio" label="Sign Up" />
+            <Form.Check type="radio" label="Sign In" />
+          </Form.Group>
           <Button type="submit">Submit</Button>
         </Form>
       </Modal.Body>
