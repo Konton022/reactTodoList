@@ -1,15 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import {} from "firebase/database";
 import {} from "firebase/auth";
-// import firebase from "firebase/compat/app";
-// import "firebase/compat/database";
-// import "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,29 +20,53 @@ const firebaseConfig = {
 };
 
 // // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 // const db = getFirestore(app);
 
 // const auth = app.auth();
 // const database = app.database();
 
 // export { auth, database };
-export const authUser = function(email, password) {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("fire user", user);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ uid: user.uid, email: user.email })
-      );
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-};
+
+class Firebase {
+  constructor() {
+    this.fire = firebase;
+    this.database = this.fire.database();
+  }
+
+  signUpUser = (email, password) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("fire user", user);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ uid: user.uid, email: user.email })
+        );
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+  signInUser(email, password) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }
+}
+
+const FirebaseClass = new Firebase();
+export default FirebaseClass;
