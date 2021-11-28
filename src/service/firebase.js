@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import {} from "firebase/database";
 import {} from "firebase/auth";
@@ -20,11 +22,30 @@ const firebaseConfig = {
   appId: "1:897290124129:web:a48b57f045e88c92076320",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// // Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 
-const auth = firebase.auth();
-const database = firebase.database();
+// const auth = app.auth();
+// const database = app.database();
 
-export { auth, database };
+// export { auth, database };
+export const authUser = function(email, password) {
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("fire user", user);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ uid: user.uid, email: user.email })
+      );
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+};

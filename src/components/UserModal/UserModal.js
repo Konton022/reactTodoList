@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
+import { authUser } from "../../service/firebase";
 
 const UserModal = ({ open, setOpen }) => {
+  const [user, setUser] = useState(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +14,7 @@ const UserModal = ({ open, setOpen }) => {
     event.preventDefault();
     console.log("email: ", email, "password", password);
     dispatch(addUser({ email, password }));
+    authUser(email, password);
     setOpen(false);
   }
   return (
@@ -23,7 +26,7 @@ const UserModal = ({ open, setOpen }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-custom-modal-styling-title">
-          Sing In
+          {user ? "Sing Out" : "Sing Up"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

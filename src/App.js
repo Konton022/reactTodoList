@@ -12,8 +12,6 @@ import Footer from "./components/Footer/Footer";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function App() {
-  // console.log("auth", auth, "database", database);
-
   return (
     <div className="App">
       <Navibar />
