@@ -1,6 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
@@ -16,7 +20,7 @@ const firebaseConfig = {
   projectId: "reacttodolist-d9b95",
   storageBucket: "reacttodolist-d9b95.appspot.com",
   messagingSenderId: "897290124129",
-  appId: "1:897290124129:web:a48b57f045e88c92076320",
+  appId: "1:897290124129:web:a48b57f045e88c92076320"
 };
 
 // // Initialize Firebase
@@ -40,11 +44,8 @@ class Firebase {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("fire user", user);
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ uid: user.uid, email: user.email })
-        );
+        console.log("fire signUpUser", user);
+        localStorage.setItem("tokenId", user.uid);
         // ...
       })
       .catch((error) => {
@@ -59,6 +60,12 @@ class Firebase {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log("fire signInUser ", user);
+        if (localStorage.getItem("tokenId" !== user.uid)) {
+          localStorage.removeItem("tokenId");
+          localStorage.setItem("tokenId", user.uid);
+        }
+
         // ...
       })
       .catch((error) => {
