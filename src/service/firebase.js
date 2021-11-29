@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
@@ -20,7 +20,7 @@ const firebaseConfig = {
   projectId: "reacttodolist-d9b95",
   storageBucket: "reacttodolist-d9b95.appspot.com",
   messagingSenderId: "897290124129",
-  appId: "1:897290124129:web:a48b57f045e88c92076320"
+  appId: "1:897290124129:web:a48b57f045e88c92076320",
 };
 
 // // Initialize Firebase
@@ -38,7 +38,7 @@ class Firebase {
     this.database = this.fire.database();
   }
 
-  signUpUser = (email, password) => {
+  signUpUser = ({ email, password }) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
