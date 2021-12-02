@@ -1,6 +1,7 @@
 import "./styles.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 // import { auth, database } from "./service/firebase";
 
 import Navibar from "./components/Navibar/Navibar";
@@ -16,16 +17,12 @@ export default function App() {
     <div className="App">
       <Navibar />
       <Container fluid>
-        <Row className="mb-5">
-          <Col></Col>
-          <Col lg={10}>
-            <Routes>
-              <Route exact path="/" element={<Projects />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </Col>
-        </Row>
+        <Routes>
+          <Route exact path="/" element={<Projects />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+
         <Footer />
       </Container>
     </div>

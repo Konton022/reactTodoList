@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../store/user";
+import { addUser, signUserFireAsync } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
 
 const UserModal = ({ open, setOpen }) => {
@@ -12,7 +12,8 @@ const UserModal = ({ open, setOpen }) => {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("email: ", email, "password", password, "signType", signType);
-    dispatch(addUser({ email, password, signType }));
+    //dispatch(addUser({ email, password, signType }));
+    dispatch(signUserFireAsync({ email, password }));
 
     setOpen(false);
   }

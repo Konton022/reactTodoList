@@ -37,7 +37,12 @@ const TaskForm = () => {
       <Button type="submit" className="m-1 mb-3" onClick={handleSubmit}>
         Submit
       </Button>
-      <Button variant="secondary" type="reset" className="m-1 mb-3">
+      <Button
+        variant="secondary"
+        type="reset"
+        className="m-1 mb-3"
+        onClick={() => setTask("")}
+      >
         Reset
       </Button>
     </Form>

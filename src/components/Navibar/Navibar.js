@@ -49,7 +49,7 @@ export default function Navibar() {
 
       <span>Hello! {user.email}</span>
       <Button className="m-2" size="sm" onClick={() => setOpen(true)}>
-        {localStorage.getItem("user") ? "Sign Out" : "Sign In"}
+        Sign In
       </Button>
       <UserModal open={open} setOpen={setOpen} />
     </Navbar>

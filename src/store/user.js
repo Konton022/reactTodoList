@@ -20,6 +20,10 @@ export const slice = createSlice({
 export const { addUser } = slice.actions;
 export const selectUserData = (state) => state.user.data;
 
-export const signUserFireAsync = () => async (dispath) => {};
+export const signUserFireAsync = (event) => async (dispath) => {
+  // FirebaseClass.signInUser();
+  dispath(addUser);
+  console.log("event", event);
+};
 
 export default slice.reducer;
