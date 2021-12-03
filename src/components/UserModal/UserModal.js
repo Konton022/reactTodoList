@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import FirebaseClass from "../../service/firebase";
 import { useDispatch } from "react-redux";
-import { addUser, signUserFireAsync } from "../../store/user";
+import { addUser } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
 
 const UserModal = ({ open, setOpen }) => {
@@ -12,8 +13,15 @@ const UserModal = ({ open, setOpen }) => {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("email: ", email, "password", password, "signType", signType);
-    //dispatch(addUser({ email, password, signType }));
-    dispatch(signUserFireAsync({ email, password }));
+    dispatch(addUser({ email, password, signType }));
+    switch (signType) {
+      case "signUp":
+        FirebaseClass.signUpUser({ email, password });
+        break;
+      case "signIn":
+        FirebaseClass.signInUser({ email, password });
+        break;
+    }
 
     setOpen(false);
   }
