@@ -32,9 +32,9 @@ export default function Navibar() {
           />
         </a>
       </Navbar.Brand>
-      {/* <Navbar.Toggle aria-controls="root-navbar-nav" /> */}
-      {/* <Navbar.Collapse id="basic-navbar-nav"> */}
-      {/* <Nav className="me-auto ">
+      <Navbar.Toggle aria-controls="root-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto ">
           <Nav.Item>
             <Link to="/">Home</Link>
           </Nav.Item>
@@ -44,8 +44,8 @@ export default function Navibar() {
           <Nav.Item>
             <Link to="/contact">Contact</Link>
           </Nav.Item>
-        </Nav> */}
-      {/* </Navbar.Collapse> */}
+        </Nav>
+      </Navbar.Collapse>
 
       <span>Hello! {user.email}</span>
       <Button className="m-2" size="sm" onClick={() => setOpen(true)}>
