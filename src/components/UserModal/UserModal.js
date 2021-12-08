@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 import FirebaseClass from "../../service/firebase";
-import { useDispatch } from "react-redux";
-import { addUser } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
+import { signUpUser, signInUser } from "../../service/firebase.js";
 
 const UserModal = ({ open, setOpen }) => {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signType, setSignType] = useState("signUp");
+  const [signType, setSignType] = useState("signIn");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log("email: ", email, "password", password, "signType", signType);
-    dispatch(addUser({ email, password, signType }));
+
     switch (signType) {
       case "signUp":
-        FirebaseClass.signUpUser({ email, password });
+        await signUpUser(email, password).then((data) =>
+          console.log("data", data)
+        );
+
         break;
+
       case "signIn":
-        FirebaseClass.signInUser({ email, password });
+        await signInUser(email, password).then((data) =>
+          console.log("data", data)
+        );
+
         break;
+
+      default:
+        alert("Repeat please");
     }
+
+    console.log("user", user);
 
     setOpen(false);
   }
@@ -58,18 +68,18 @@ const UserModal = ({ open, setOpen }) => {
           <Form.Group className="m-3">
             <Form.Check
               type="radio"
-              label="Sign Up"
+              label="Sign In"
               name="signType"
               defaultChecked
-              onChange={() => {
-                setSignType("signUp");
-              }}
+              onChange={() => setSignType("signIn")}
             />
             <Form.Check
               type="radio"
-              label="Sign In"
+              label="Sign Up please if don't have an account"
               name="signType"
-              onChange={() => setSignType("signIn")}
+              onChange={() => {
+                setSignType("signUp");
+              }}
             />
           </Form.Group>
           <Button type="submit">Submit</Button>
