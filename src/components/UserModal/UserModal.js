@@ -1,37 +1,45 @@
 import React, { useState } from "react";
-import FirebaseClass from "../../service/firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "firebase/auth";
+
+import { useDispatch } from "react-redux";
+import { addUser } from "../../store/user";
 import { Modal, Form, Button } from "react-bootstrap";
-import { signUpUser, signInUser } from "../../service/firebase.js";
 
 const UserModal = ({ open, setOpen }) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signType, setSignType] = useState("signIn");
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     console.log("email: ", email, "password", password, "signType", signType);
-
+    const auth = getAuth();
     switch (signType) {
       case "signUp":
-        await signUpUser(email, password).then((data) =>
-          console.log("data", data)
+        createUserWithEmailAndPassword(auth, email, password).then(
+          ({ user }) => {
+            console.log("signUP", user);
+          }
         );
 
         break;
 
       case "signIn":
-        await signInUser(email, password).then((data) =>
-          console.log("data", data)
-        );
+        signInWithEmailAndPassword(auth, email, password).then(({ user }) => {
+          console.log("Login", user);
+          dispatch(addUser({ login: user.email, id: user.uid }));
+        });
 
         break;
 
       default:
         alert("Repeat please");
     }
-
-    console.log("user", user);
 
     setOpen(false);
   }
