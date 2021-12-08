@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectUserData } from "../../store/user";
 import UserModal from "../UserModal/UserModal";
-import logo from "./logo2.png";
+import logo from "./logo3.svg";
 
 export default function Navibar() {
   const user = useSelector(selectUserData);

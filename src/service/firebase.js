@@ -1,10 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
@@ -19,39 +14,39 @@ const firebaseConfig = {
   projectId: "reacttodolist-d9b95",
   storageBucket: "reacttodolist-d9b95.appspot.com",
   messagingSenderId: "897290124129",
-  appId: "1:897290124129:web:a48b57f045e88c92076320"
+  appId: "1:897290124129:web:a48b57f045e88c92076320",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-function signUpUser(email, password) {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(({ user }) => {
-      // Signed in
-      console.log("signUP", user);
-      return user;
+// function signUpUser(email, password) {
+//   const auth = getAuth();
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then(({ user }) => {
+//       // Signed in
+//       console.log("signUP", user);
+//       return user;
 
-      // ...
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-}
-function signInUser(email, password) {
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then(
-      ({ user }) => {
-        console.log("Login", user);
-        return user;
-      }
+//       // ...
+//     })
+//     .catch((error) => {
+//       console.log("error", error);
+//     });
+// }
+// function signInUser(email, password) {
+//   const auth = getAuth();
+//   signInWithEmailAndPassword(auth, email, password)
+//     .then(
+//       ({ user }) => {
+//         console.log("Login", user);
+//         return user;
+//       }
 
-      // ...
-    )
-    .catch((error) => {
-      console.log("error", error);
-    });
-}
+//       // ...
+//     )
+//     .catch((error) => {
+//       console.log("error", error);
+//     });
+// }
 
-export { signUpUser, signInUser };
+// export { signUpUser, signInUser };

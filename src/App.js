@@ -12,6 +12,7 @@ import Contact from "./Routes/Contact";
 import Footer from "./components/Footer/Footer";
 import { Container, Row, Col } from "react-bootstrap";
 
+
 export default function App() {
   return (
     <div className="App">

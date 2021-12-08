@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { useDispatch } from "react-redux";
@@ -24,6 +24,14 @@ const UserModal = ({ open, setOpen }) => {
         createUserWithEmailAndPassword(auth, email, password).then(
           ({ user }) => {
             console.log("signUP", user);
+            dispatch(
+              addUser({
+                login: user.email,
+                id: user.uid,
+                token: user.accessToken,
+              })
+            );
+            localStorage.setItem("id", user.uid);
           }
         );
 
@@ -32,7 +40,14 @@ const UserModal = ({ open, setOpen }) => {
       case "signIn":
         signInWithEmailAndPassword(auth, email, password).then(({ user }) => {
           console.log("Login", user);
-          dispatch(addUser({ login: user.email, id: user.uid }));
+          dispatch(
+            addUser({
+              login: user.email,
+              id: user.uid,
+              token: user.accessToken,
+            })
+          );
+          localStorage.setItem("id", user.uid);
         });
 
         break;
@@ -83,7 +98,7 @@ const UserModal = ({ open, setOpen }) => {
             />
             <Form.Check
               type="radio"
-              label="Sign Up please if don't have an account"
+              label="Sign Up please, if don't have an account"
               name="signType"
               onChange={() => {
                 setSignType("signUp");
